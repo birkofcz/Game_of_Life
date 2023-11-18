@@ -7,6 +7,7 @@
 #include <string>
 #include <vector>
 #include <unistd.h>
+#include <sstream>
 
 //namespace snippets to use
 using std::cout;
@@ -14,6 +15,7 @@ using std::cerr;
 using std::endl;
 using std::string;
 using std::vector;
+using std::stringstream;
 
 //colors
 #define RED		"\033[31m"

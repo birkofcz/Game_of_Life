@@ -12,6 +12,17 @@
 #include "../include/general.hpp"
 
 
+void initGliderPattern(vector<vector<bool>> &grid)
+{
+    // Resize grid to gridSize x gridSize and initialize with false
+
+	grid[1][2] = true;
+	grid[2][3] = true;
+	grid[3][1] = true;
+	grid[3][2] = true;
+	grid[3][3] = true;
+}
+
 void	initGrid(vector<vector<bool>> &grid)
 {
 	/* for testing purposes - initial set to "frog" */
@@ -24,58 +35,72 @@ void	initGrid(vector<vector<bool>> &grid)
 	grid[4][3] = true;
 }
 
-void	printGrid(vector<vector<bool>> grid)
+// void	printGrid(vector<vector<bool>> grid)
+// {
+// 	usleep(80000);
+// 	system("clear");
+
+// 	unsigned long i, j;
+	
+// 	cout << endl << endl;
+// 	for (i = 0; i < grid.size(); ++i) 
+// 	{
+// 		for (j = 0; j < grid[i].size(); ++j) 
+// 		{
+// 			if (grid[i][j] == false)
+// 				cout << " " << " ";
+// 			else
+// 				cout << "#" << " ";
+// 		}
+// 		cout << endl;
+// 	}
+// }
+
+
+
+/* slightly better version using stringstream */
+void printGrid(const vector<vector<bool>> &grid)
 {
-	usleep(100000);
+    usleep(80000); // Sleep for 80 milliseconds
+
+    // Move the cursor to the top left corner of the terminal
 	system("clear");
 
-	unsigned long i, j;
-	
-	for (i = 0; i < grid.size(); ++i) 
-	{
-		for (j = 0; j < grid[i].size(); ++j) 
-		{
-			if (grid[i][j] == false)
-				cout << " " << " ";
-			else
-				cout << "+" << " ";
-		}
-		cout << endl;
-	}
+    cout << "\033[H";
+
+	cout << GREEN << "GAME OF LIFE" << RESET << endl;
+	cout << endl << endl;
+
+    stringstream ss;
+
+    // // Print top border
+    // ss << "+";
+    // for (unsigned long j = 0; j < grid[0].size(); ++j) {
+    //     ss << "--";
+    // }
+    // ss << "+" << endl;
+
+    // Print grid with side borders
+    for (unsigned long i = 0; i < grid.size(); ++i) {
+        // ss << "|"; // Left border
+        for (unsigned long j = 0; j < grid[i].size(); ++j) {
+            ss << (grid[i][j] ? "# " : "  ");
+        }
+        ss << endl; // Right border
+    }
+
+    // Print bottom border
+    // ss << "+";
+    // for (unsigned long j = 0; j < grid[0].size(); ++j) {
+    //     ss << "--";
+    // }
+    // ss << "+" << endl;
+
+    // Print the entire frame
+    cout << ss.str();
 }
 
-// int	checkNeigbours(vector<vector<bool>> &grid, int x, int y)
-// {
 
-// 	/* 
-// 	 Cell has 8 neighbours that we need to check
-
-// 	 1 2 3
-// 	 8 C 4
-// 	 7 6 5
-// 	 */
-
-// 	int count = 0;
-	
-// 	if (grid[x-1][y-1] == true)	// 1
-// 		count++;
-// 	if (grid[x-1][y] == true)	// 2
-// 		count++;
-// 	if (grid[x-1][y+1] == true) // 3
-// 		count++;
-// 	if (grid[x][y+1] == true)	// 4
-// 		count++;
-// 	if (grid[x+1][y+1] == true) // 5
-// 		count++;
-// 	if (grid[x+1][y] == true)	// 6
-// 		count++;
-// 	if (grid[x+1][y-1] == true) // 7
-// 		count++;
-// 	if (grid[x][y-1] == true)	// 8
-// 		count++;
-
-// 	return count;
-// }
 
 int checkNeighbours(const vector<vector<bool>> &grid, int x, int y)
 {
@@ -124,13 +149,13 @@ int checkNeighbours(const vector<vector<bool>> &grid, int x, int y)
 }
 
 
-void   setGrid(vector<vector<bool>> &grid)
+void	setGrid(vector<vector<bool>> &grid)
 {
 	vector<vector<bool>> tempGrid = grid;
 	int x, y;
 	
 
-	for (x = 0; x < (int)grid.size() -1; ++x) 
+	for (x = 0; x < (int)grid.size(); ++x) 
 	{
 		for (y = 0; y < (int)grid[x].size(); ++y) 
 		{
@@ -146,18 +171,21 @@ void   setGrid(vector<vector<bool>> &grid)
 	grid = tempGrid;
 }
 
-int main() {
-    const int gridSize = 6;
-    // Create a 6x6 grid of '0' characters
-    vector<vector<bool>> grid(gridSize, vector<bool>(gridSize, false));
+int main()
+{
+	const int gridSize = 6;
+
+	vector<vector<bool>> grid(gridSize, vector<bool>(gridSize, false));
 	int cycles = 0;
 
+
 	initGrid(grid);
-	while (cycles < 50)
+	while (cycles < 49)
 	{
     	printGrid(grid);
 		setGrid(grid);
 		cycles++;
+		cout << "Cycle: " << cycles << endl;
 	}
     return 0;
 }
