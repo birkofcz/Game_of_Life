@@ -11,96 +11,47 @@
 
 #include "../include/general.hpp"
 
-
-void initGliderPattern(vector<vector<bool>> &grid)
-{
-    // Resize grid to gridSize x gridSize and initialize with false
-
-	grid[1][2] = true;
-	grid[2][3] = true;
-	grid[3][1] = true;
-	grid[3][2] = true;
-	grid[3][3] = true;
-}
-
-void	initGrid(vector<vector<bool>> &grid)
-{
-	/* for testing purposes - initial set to "frog" */
-
-	grid[1][4] = true;
-	grid[2][2] = true;
-	grid[2][5] = true;
-	grid[3][2] = true;
-	grid[3][5] = true;
-	grid[4][3] = true;
-}
-
-// void	printGrid(vector<vector<bool>> grid)
-// {
-// 	usleep(80000);
-// 	system("clear");
-
-// 	unsigned long i, j;
-	
-// 	cout << endl << endl;
-// 	for (i = 0; i < grid.size(); ++i) 
-// 	{
-// 		for (j = 0; j < grid[i].size(); ++j) 
-// 		{
-// 			if (grid[i][j] == false)
-// 				cout << " " << " ";
-// 			else
-// 				cout << "#" << " ";
-// 		}
-// 		cout << endl;
-// 	}
-// }
-
-
-
-/* slightly better version using stringstream */
+/* Stringstream version - better on output quality */
 void printGrid(const vector<vector<bool>> &grid)
 {
-    usleep(80000); // Sleep for 80 milliseconds
+	usleep(100000); // Sleep for 100 milliseconds
 
-    // Move the cursor to the top left corner of the terminal
+	// Move the cursor to the top left corner of the terminal
 	system("clear");
+	cout << "\033[H";
 
-    cout << "\033[H";
+	// Print the title
+	cout << "----------------" << endl;
+	cout << GREEN << "  GAME OF LIFE" << RESET << endl;
+	cout << "----------------" << endl;
+	cout << endl;
 
-	cout << GREEN << "GAME OF LIFE" << RESET << endl;
-	cout << endl << endl;
+	stringstream ss;
 
-    stringstream ss;
+	// Print top border
+	ss << "+";
+	for (unsigned long j = 0; j < grid[0].size(); ++j)
+		ss << "--";
+	ss << "+" << endl;
 
-    // // Print top border
-    // ss << "+";
-    // for (unsigned long j = 0; j < grid[0].size(); ++j) {
-    //     ss << "--";
-    // }
-    // ss << "+" << endl;
+	// Print grid with side borders
+	for (unsigned long i = 0; i < grid.size(); ++i)
+	{
+		ss << "|"; // Left border
+		for (unsigned long j = 0; j < grid[i].size(); ++j)
+			ss << (grid[i][j] ? "# " : "  ");
+		ss << "|" << endl; // Right border
+	}
 
-    // Print grid with side borders
-    for (unsigned long i = 0; i < grid.size(); ++i) {
-        // ss << "|"; // Left border
-        for (unsigned long j = 0; j < grid[i].size(); ++j) {
-            ss << (grid[i][j] ? "# " : "  ");
-        }
-        ss << endl; // Right border
-    }
+	// Print bottom border
+	ss << "+";
+	for (unsigned long j = 0; j < grid[0].size(); ++j)
+		ss << "--";
+	ss << "+" << endl;
 
-    // Print bottom border
-    // ss << "+";
-    // for (unsigned long j = 0; j < grid[0].size(); ++j) {
-    //     ss << "--";
-    // }
-    // ss << "+" << endl;
-
-    // Print the entire frame
-    cout << ss.str();
+	// Print the entire frame
+	cout << ss.str();
 }
-
-
 
 int checkNeighbours(const vector<vector<bool>> &grid, int x, int y)
 {
@@ -151,7 +102,7 @@ int checkNeighbours(const vector<vector<bool>> &grid, int x, int y)
 
 void	setGrid(vector<vector<bool>> &grid)
 {
-	vector<vector<bool>> tempGrid = grid;
+	vector<vector<bool>> temp_grid = grid;
 	int x, y;
 	
 
@@ -161,31 +112,58 @@ void	setGrid(vector<vector<bool>> &grid)
 		{
 			int count = checkNeighbours(grid, x, y);
 			if (count < 2 || count > 3)
-				tempGrid[x][y] = false;
+				temp_grid[x][y] = false;
 			else if (count == 3)
-				tempGrid[x][y] = true;
+				temp_grid[x][y] = true;
 
 		}
-		cout << endl;
 	}
-	grid = tempGrid;
+	grid = temp_grid;
 }
 
-int main()
+int main(int ac, char **av)
 {
-	const int gridSize = 6;
-
-	vector<vector<bool>> grid(gridSize, vector<bool>(gridSize, false));
-	int cycles = 0;
-
-
-	initGrid(grid);
-	while (cycles < 49)
+	if (ac == 3)
 	{
-    	printGrid(grid);
-		setGrid(grid);
-		cycles++;
-		cout << "Cycle: " << cycles << endl;
+		string configuration(av[1]);
+		int generations = atoi(av[2]);
+		const int grid_size = 40;
+
+		vector<string> configurations = {"glider", "frog", "gun", "five"};
+
+		if (find(configurations.begin(), configurations.end(), configuration) == configurations.end())
+		{
+			cout << RED << "Invalid configuration. Available configurations: glider, frog, gun" << RESET << endl;
+			return 1;
+		}
+
+		vector<vector<bool>> grid(grid_size, vector<bool>(grid_size, false));
+
+		if (configuration == "glider")
+			init_glider(grid);
+		else if (configuration == "frog")
+			init_frog(grid);
+		else if (configuration == "gun")
+			init_gun(grid);
+		else if (configuration == "five")
+			init_fiveonfive(grid);
+
+
+		int cycles = 0;
+		while (cycles++ < generations)
+		{
+			printGrid(grid);
+			setGrid(grid);
+			cout << endl << "Generation: " << cycles << endl;
+		}
+		cout << endl << GREEN << "Simulation finished." << RESET << endl << endl;
+		
 	}
-    return 0;
+	else
+	{
+		cout << RED << "Invalid number of arguments. Usage: ./game_of_life <configuration> <generations>" << RESET << endl;
+		return 1;
+	}
+
+	return 0;
 }

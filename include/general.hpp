@@ -8,6 +8,7 @@
 #include <vector>
 #include <unistd.h>
 #include <sstream>
+#include <algorithm>
 
 //namespace snippets to use
 using std::cout;
@@ -24,5 +25,15 @@ using std::stringstream;
 #define BLUE	"\033[34m"
 #define RESET	"\033[0m"
 #define NONE	""
+
+/* -----  Functions  ----- */
+
+/* configurations.cpp */
+void init_fiveonfive(vector<vector<bool>> &grid);
+void init_gun(vector<vector<bool>> &grid);
+void init_glider(vector<vector<bool>> &grid);
+void init_frog(vector<vector<bool>> &grid);
+
+
 
 #endif

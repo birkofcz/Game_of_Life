@@ -21,7 +21,7 @@ INC =	-I ./include/
 
 #sources
 SRC_PATH =	src/
-SRC = 	main.cpp
+SRC = 	main.cpp configurations.cpp
 	
 SRCS =	$(addprefix $(SRC_PATH), $(SRC))
 
@@ -45,20 +45,27 @@ $(NAME): $(OBJS)
 	@echo "$(BOLD)$(GREEN)[ 🙊 Compiling ... ]$(NC)"
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(INC)
 	@echo "$(BOLD)$(GREEN)[ 🪄 Program ready! ]$(NC)"
-	@echo "$(BOLD)$(GREEN)                        "
-	@echo "              _                         "
-	@echo "             | |                        "
-	@echo "__      _____| |__  ___  ___ _ ____   __"
-	@echo "\ \ /\ / / _ \ '_ \/ __|/ _ \ '__\ \ / /"
-	@echo " \ V  V /  __/ |_| \__ \  __/ |   \ V / "
-	@echo "  \_/\_/ \___|_.__/|___/\___|_|    \_/  "
-	@echo "                                        "
-	@echo "                                        "
-	@echo " run ./gameoflife <config_file>         "
+	@echo "$(BOLD)$(GREEN)                                                "
+	@echo "   ______                              ____   __    _ ____     "
+	@echo "  / ____/___ _____ ___  ___     ____  / __/  / /   /_/ __/__   "
+	@echo " / / __/ __  / __  __ \/ _ \   / __ \/ /_   / /   / / /_/ _ \  "
+	@echo "/ /_/ / /_/ / / / / / /  __/  / /_/ / __/  / /___/ / __/  __/  "
+	@echo "\____/\__,_/_/ /_/ /_/\___/   \____/_/    /_____/_/_/  \___/   "
+	@echo "                                                               "
+	@echo " run ./gameoflife <configuration> <generations>                "
+	@echo "                                                               "
+	@echo " available configurations:                                     "
+	@echo " 1. glider                                                     "
+	@echo " 2. gun                                                        "
+	@echo " 3. frog                                                       "
+	@echo " 4. five                                                       "
 	@echo "                                   $(NC)"
  
+test-colors:
+	@echo "$(GREEN)This should be green$(NC)"
+	@echo "$(RED)This should be red$(NC)"
+	@echo "$(BLUE)This should be blue$(NC)"
 
-bonus: all
 
 clean:
 	@echo "$(BOLD)$(RED)[ 🔥 Purging object files ]$(NC)"
