@@ -21,7 +21,7 @@ INC =	-I ./include/
 
 #sources
 SRC_PATH =	src/
-SRC = 	main.cpp configurations.cpp
+SRC = 	main.cpp configurations.cpp grid.cpp
 	
 SRCS =	$(addprefix $(SRC_PATH), $(SRC))
 
@@ -60,12 +60,6 @@ $(NAME): $(OBJS)
 	@echo " 3. frog                                                       "
 	@echo " 4. five                                                       "
 	@echo "                                   $(NC)"
- 
-test-colors:
-	@echo "$(GREEN)This should be green$(NC)"
-	@echo "$(RED)This should be red$(NC)"
-	@echo "$(BLUE)This should be blue$(NC)"
-
 
 clean:
 	@echo "$(BOLD)$(RED)[ 🔥 Purging object files ]$(NC)"

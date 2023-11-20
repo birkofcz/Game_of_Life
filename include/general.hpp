@@ -29,11 +29,14 @@ using std::stringstream;
 /* -----  Functions  ----- */
 
 /* configurations.cpp */
-void init_fiveonfive(vector<vector<bool>> &grid);
-void init_gun(vector<vector<bool>> &grid);
-void init_glider(vector<vector<bool>> &grid);
-void init_frog(vector<vector<bool>> &grid);
+void	init_fiveonfive(vector<vector<bool>> &grid);
+void	init_gun(vector<vector<bool>> &grid);
+void	init_glider(vector<vector<bool>> &grid);
+void	init_frog(vector<vector<bool>> &grid);
 
-
+/* grid.cpp */
+void	printGrid(const vector<vector<bool>> &grid);
+int		checkNeighbours(const vector<vector<bool>> &grid, int x, int y);
+void	setGrid(vector<vector<bool>> &grid);
 
 #endif
