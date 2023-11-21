@@ -57,7 +57,7 @@ $(NAME): $(OBJS)
 	@echo " available configurations:                                     "
 	@echo " 1. glider                                                     "
 	@echo " 2. gun                                                        "
-	@echo " 3. frog                                                       "
+	@echo " 3. toad                                                       "
 	@echo " 4. five                                                       "
 	@echo "                                   $(NC)"
 

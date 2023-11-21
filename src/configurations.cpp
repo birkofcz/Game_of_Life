@@ -98,7 +98,7 @@ void init_glider(vector<vector<bool>> &grid)
 	grid[3][3] = true;
 }
 
-void	init_frog(vector<vector<bool>> &grid)
+void	init_toad(vector<vector<bool>> &grid)
 {
 	grid[1][4] = true;
 	grid[2][2] = true;

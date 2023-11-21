@@ -32,7 +32,7 @@ using std::stringstream;
 void	init_fiveonfive(vector<vector<bool>> &grid);
 void	init_gun(vector<vector<bool>> &grid);
 void	init_glider(vector<vector<bool>> &grid);
-void	init_frog(vector<vector<bool>> &grid);
+void	init_toad(vector<vector<bool>> &grid);
 
 /* grid.cpp */
 void	printGrid(const vector<vector<bool>> &grid);

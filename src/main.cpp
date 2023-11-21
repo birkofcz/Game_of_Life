@@ -19,7 +19,7 @@ int main(int ac, char **av)
 		int generations = atoi(av[2]);
 		const int grid_size = 40;
 
-		vector<string> configurations = {"glider", "frog", "gun", "five"};
+		vector<string> configurations = {"glider", "toad", "gun", "five"};
 
 		if (find(configurations.begin(), configurations.end(), configuration) == configurations.end())
 		{
@@ -31,8 +31,8 @@ int main(int ac, char **av)
 
 		if (configuration == "glider")
 			init_glider(grid);
-		else if (configuration == "frog")
-			init_frog(grid);
+		else if (configuration == "toad")
+			init_toad(grid);
 		else if (configuration == "gun")
 			init_gun(grid);
 		else if (configuration == "five")
