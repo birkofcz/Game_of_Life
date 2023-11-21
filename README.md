@@ -27,11 +27,7 @@ Run the simulation with the following command format in the terminal:
 ```bash
 ./gameoflife <configuration> <generations>
 ```
-### <configuration>:
-Choose from "glider", "frog", "gun", or "five".
-### <generations>: 
-Number of generations for the simulation.
-
+- choose from four hardcoded initial configurations: "frog", "glider", "five" or "gun".
 
 ## Example
 
