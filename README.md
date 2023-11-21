@@ -35,7 +35,7 @@ Choose from four hardcoded initial configurations: "toad", "glider", "five" (5x5
 
 Run the simulation for a "glider" configuration for 50 generations using the command:
 ```bash
-./gameoflife glider 50
+./gameoflife gun 50
 ```
 <p align="center">
   <img src="0_resources/game.png" />
