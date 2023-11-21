@@ -27,14 +27,17 @@ Run the simulation with the following command format in the terminal:
 ```bash
 ./gameoflife <configuration> <generations>
 ```
-<configuration>: Choose from "glider", "frog", "gun", or "five".
-<generations>: Number of generations for the simulation.
+### <configuration>:
+Choose from "glider", "frog", "gun", or "five".
+### <generations>: 
+Number of generations for the simulation.
+
 
 ## Example
 
 Run the simulation for a "glider" configuration for 50 generations using the command:
 ```bash
-./game_of_life glider 50
+./gameoflife glider 50
 ```
 
 
