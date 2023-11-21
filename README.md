@@ -1,9 +1,6 @@
-# Game of Life Simulation
-
 <p align="center">
   <img src="0_resources/title.png" />
 </p>
-
 
 ## Overview
 
@@ -40,5 +37,8 @@ Run the simulation for a "glider" configuration for 50 generations using the com
 ```bash
 ./gameoflife glider 50
 ```
+<p align="center">
+  <img src="0_resources/game.png" />
+</p>
 
 
