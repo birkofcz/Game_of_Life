@@ -8,7 +8,6 @@ The implementation runs in a terminal environment and offers four hardcoded init
 
 ## Features
 
-- **Terminal-based Simulation:** Runs in any standard terminal.
 - **Four Initial Configurations:** Choose from "glider," "frog," "gun," and "five" to start the simulation.
 - **Customizable Generations:** Users can specify the number of generations for the simulation to run.
 
@@ -20,24 +19,22 @@ The implementation runs in a terminal environment and offers four hardcoded init
 ## Installation
 
 1. Clone the repository to your local machine.
-2. Compile the code using a C++ compiler. For example:
-   ```bash
-   g++ -o game_of_life main.cpp
+2. run Makefile.
 
 ## Usage
 
 Run the simulation with the following command format in the terminal:
 ```bash
-./game_of_life <configuration> <generations>
-
+./gameoflife <configuration> <generations>
+```
 <configuration>: Choose from "glider", "frog", "gun", or "five".
 <generations>: Number of generations for the simulation.
 
 ## Example
 
 Run the simulation for a "glider" configuration for 50 generations using the command:
-
 ```bash
 ./game_of_life glider 50
+```
 
 
