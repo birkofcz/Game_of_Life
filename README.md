@@ -8,7 +8,7 @@ This project is a very simple C++ implementation of the "Game of Life," a cellul
 
 The implementation runs in a terminal environment in fixed 40 x 40 grid and offers four hardcoded initial states: "glider," "frog," "gun" (Gosper glider gun), and "five" (5x5).
 
-It's a basic, rudimentary version without a graphical interface, made for fun.
+It's a basic, rudimentary version without a graphical interface, made just for fun.
 
 ## Features
 
@@ -43,4 +43,6 @@ Run the simulation for a "glider" configuration for 50 generations using the com
   <img src="0_resources/game.png" />
 </p>
 
+-----------------------------------------------------------------------------------------------------------------
+Header illustration made by DALL-E 3
 
