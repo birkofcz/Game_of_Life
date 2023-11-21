@@ -1,5 +1,10 @@
 # Game of Life Simulation
 
+<p align="center">
+  <img src="0_resources/title.png" />
+</p>
+
+
 ## Overview
 
 This project is a simple C++ implementation of the "Game of Life," a cellular automaton devised by the British mathematician John Horton Conway in 1970. The Game of Life is not a conventional game, but a zero-player game, where its evolution is determined by its initial state, requiring no further input. It's widely used in computer science and mathematics to study complex systems, emergent behaviors, and for entertainment.
