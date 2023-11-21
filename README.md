@@ -23,3 +23,21 @@ The implementation runs in a terminal environment and offers four hardcoded init
 2. Compile the code using a C++ compiler. For example:
    ```bash
    g++ -o game_of_life main.cpp
+
+## Usage
+
+Run the simulation with the following command format in the terminal:
+```bash
+./game_of_life <configuration> <generations>
+
+<configuration>: Choose from "glider", "frog", "gun", or "five".
+<generations>: Number of generations for the simulation.
+
+## Example
+
+Run the simulation for a "glider" configuration for 50 generations using the command:
+
+```bash
+./game_of_life glider 50
+
+
