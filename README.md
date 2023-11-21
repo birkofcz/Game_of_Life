@@ -17,7 +17,7 @@ It's a basic, rudimentary version without a graphical interface, made for fun.
 
 ## Requirements
 
-- C++ Compiler (GCC or Clang)
+- C++ Compiler
 - Standard C++ Libraries
 
 ## Installation
