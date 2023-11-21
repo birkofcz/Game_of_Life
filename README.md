@@ -27,7 +27,7 @@ Run the simulation with the following command format in the terminal:
 ```bash
 ./gameoflife <configuration> <generations>
 ```
-- choose from four hardcoded initial configurations: "frog", "glider", "five" or "gun".
+Choose from four hardcoded initial configurations: "frog", "glider", "five" or "gun".
 
 ## Example
 
