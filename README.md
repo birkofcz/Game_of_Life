@@ -44,5 +44,4 @@ Run the simulation for a "glider" configuration for 50 generations using the com
 </p>
 
 -----------------------------------------------------------------------------------------------------------------
-Header illustration made by DALL-E 3
 
